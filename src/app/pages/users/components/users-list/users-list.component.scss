@@ -1,0 +1,63 @@
+.card{
+    box-shadow: 1px 1px 10px -4px rgba(0,0,0,0.75);
+}
+mat-paginator{
+    color: black;
+    border: 1px solid #ccc;
+}
+:host::ng-deep.mat-mdc-paginator .mat-mdc-select-value{
+    color: black !important;
+}
+
+@media (min-width: 320px) and (max-width:359px){
+    .user-image{
+        padding-left: 61px;
+    }
+}
+@media (min-width: 360px) and (max-width:374px){
+    .user-image{
+        padding-left: 61px;
+    }
+}
+@media (min-width: 375px) and (max-width:410px){
+    .user-image{
+        padding-left: 87px;
+    }
+}
+@media (min-width: 411px) and (max-width: 575px) {
+    .user-image{
+        padding-left: 110px;
+    }
+}
+ 
+@media (min-width: 576px) and (max-width: 767px) {
+    .user-image{
+        padding-left: 281px;
+    }
+}
+@media(min-width: 768px) and (max-width: 991px) {
+    .user-image{
+        padding-left: 281px;
+    }
+} 
+@media (min-width: 992px) and (max-width: 1199px){ 
+    .user-image{
+        padding-left: 65px;
+    }
+}
+ 
+@media screen and (min-width: 1400px) {
+    .user-image{
+        padding-left: 125px;
+    }
+  }
+  @media screen and (min-width: 1600px) {
+    .user-image{
+        padding-left: 310px;
+    }
+  }
+  @media screen and (min-width: 1900px) {
+    .user-image{
+        padding-left: 310px;
+    }
+}

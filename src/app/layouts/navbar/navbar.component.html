@@ -1,0 +1,30 @@
+<div class="">
+  <mat-toolbar style="background-color: transparent; box-shadow: 1px 1px 10px -4px rgba(0, 0, 0, 0.75);" >
+    <mat-toolbar-row class="flex justify-between items-center">
+
+
+      <span  class="text-[#458a8a] logo"> <a routerLink="/">Maids</a>
+      </span>
+      <span class="example-spacer"></span>
+
+
+      <div class="lg:flex  gap-4">
+
+
+        <!-- <mat-form-field>
+          <mat-label>Input</mat-label>
+          <input matInput type="text">
+        </mat-form-field> -->
+
+        <div>
+          <input class="border p-[5px] rounded outline-none" (keypress)="onInputChange($event)" [formControl]="search" type="text" placeholder="Search By Id">
+        </div>
+        
+        
+        
+      </div>
+
+ 
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>

@@ -1,0 +1,85 @@
+<div class="grid grid-cols-3 gap-4 justify-center mt-4 " *ngIf="!isFiltered">
+    @for (user of data().data; track $index) {
+    <div appScaleOut class="hidden lg:block h-[300px] relative card border text-center rounded mx-5 my-5 cursor-pointer"
+        (click)="onNavigate(user.id)">
+        <div class="user-image bg-[#458a8a] pl-[140px] lg:pl-[133px] pb-[131px]">
+            <img class="rounded-full m-auto my-[51px] lg:w-[170px] lg:h-[170px] absolute" src="{{ user.avatar }}" alt="{{ user.avatar }}">
+        </div>
+        <div class="content mt-24">
+            <p class="text-xl">
+                {{ user.first_name }} {{ user.last_name }}
+            </p>
+        </div>
+    </div>
+
+
+    }@empty {
+    <div class="hidden w-full col-span-3 lg:flex justify-center items-center flex-col my-14">
+        <img src="./../../../../../assets/no-data.png" alt="No Data">
+        <p class="text-2xl">Oops there is no data yet !! </p>
+    </div>
+    }
+
+
+    @if (data().data?.length && !isFiltered){
+    <div class="hidden lg:block w-full col-span-3">
+        <mat-paginator [length]="data().total" [pageSize]="data().per_page" [pageSizeOptions]="[5, 10, 25, 100]"
+            (page)="onPageChange($event)">
+        </mat-paginator>
+    </div>
+    }
+</div>
+
+
+<div class="mat-elevation-z8 lg:hidden " *ngIf="!isFiltered">
+    <table mat-table [dataSource]="data().data">
+        <!-- Card Column -->
+        <ng-container matColumnDef="card">
+            <td appScaleOut mat-cell *matCellDef="let user" class="card-cell">
+                <div class="card border text-center h-[300px] relative  rounded mx-5 my-5 cursor-pointer"
+                    (click)="onNavigate(user.id)">
+                    <div class="user-image bg-[#458a8a] pl-[140px] lg:pl-[133px] pb-[131px]">
+                        <img class="rounded-full m-auto my-[51px] lg:w-[170px] lg:h-[170px] absolute" [src]="user.avatar"
+                            [alt]="user.avatar">
+                    </div>
+                    <div class="content mt-24">
+                        <p class="text-xl">{{ user.first_name }} {{ user.last_name }}</p>
+                    </div>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-row *matRowDef="let row; columns: ['card'];"></tr>
+    </table>
+
+    @if (data().data?.length && !isFiltered){
+    <div class=" lg:hidden w-full">
+        <mat-paginator [length]="data().total" [pageSize]="data().per_page" [pageSizeOptions]="[5, 10, 25, 100]"
+            (page)="onPageChange($event)">
+        </mat-paginator>
+    </div>
+}
+
+    <div *ngIf="data().data?.length === 0" class="lg:hidden  flex flex-col items-center justify-center mt-8">
+        <img src="./../../../../../assets/no-data.png" alt="No Data" >
+        <p class="text-lg mt-4">Oops, there is no data yet!</p>
+    </div>
+</div>
+
+<div class="lg:grid lg:grid-cols-3">
+    <div></div>
+    <div appScaleOut>
+        <div appScaleOut class="card border text-center h-[300px] relative  rounded mx-5 my-5 cursor-pointer" *ngIf="isFiltered" (click)="onNavigate(filteredUser.id)">
+            <div class="user-image bg-[#458a8a] pl-[140px] lg:pl-[133px] pb-[131px]">
+                <img class="rounded-full m-auto my-[51px] lg:w-[170px] lg:h-[170px] absolute" src="{{ filteredUser?.avatar }}"
+                    alt="{{ filteredUser?.avatar }}">
+            </div>
+            <div class="content mt-24">
+                <p class="text-xl ">
+                    {{ filteredUser?.first_name }} {{ filteredUser?.last_name }}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div></div>
+</div>
